@@ -1,0 +1,19 @@
+= form_for @user,:url => {:action=> :login} do |f|
+  %label= "name"
+  = f.text_field :name
+  %br
+
+  %label= "password"
+  = f.password_field :password
+  %br
+
+  %label= "password_confirmation"
+  = f.password_field :password_confirmation
+  %br
+
+  = f.submit :value
+
+= login_status
+
+= link_to "ユーザー新規作成", '/auth'
+= link_to "ログアウト", '/auth/logout'

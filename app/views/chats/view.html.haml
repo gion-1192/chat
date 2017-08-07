@@ -1,0 +1,9 @@
+- content_for :header do 
+  = javascript_include_tag "socket/socket.js"
+
+%p
+  =%Q{#{@id}のチャット}
+%button.send
+  ="send"
+%input.message{:type => 'text'}
+.warpper

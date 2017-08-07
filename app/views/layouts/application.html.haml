@@ -1,0 +1,7 @@
+%html{:lang=>"ja"}
+  %head
+    =javascript_include_tag "application"
+    - if content_for?(:header)
+      = yield(:header)
+  %body
+    =yield

@@ -1,0 +1,5 @@
+- @chat.each do |c|
+  %p
+    =link_to c.title, %Q{chat/#{c.id}}
+
+=link_to "チャット新規", "/chat/new"

@@ -3,6 +3,8 @@
 
 %p
   =%Q{#{@id}のチャット}
+%p
+  =%Q(ユーザー名:#{@user_id})
 %button.send
   ="send"
 %input.message{:type => 'text'}

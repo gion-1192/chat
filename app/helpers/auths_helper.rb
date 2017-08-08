@@ -1,9 +1,13 @@
 module AuthsHelper
+
+	include AuthUser
+
 	def login_status
-		unless session[:user_id].nil?
+		if user_signed_in?
 			"ログイン中"
 		else 
 			"ログイン未"
 		end
 	end
+
 end

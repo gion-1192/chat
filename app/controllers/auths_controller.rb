@@ -1,5 +1,7 @@
 class AuthsController < ApplicationController
-  def show
+  include AuthUser
+	
+	def show
 		@user = User.new
 	end
 
@@ -13,9 +15,7 @@ class AuthsController < ApplicationController
 	end
 
 	def login
-		user = User.find_by(name: params[:user][:name])
-		if user && user.authenticate(params[:user][:password])
-			session[:user_id] = user.id
+		if user_auth?
 			redirect_to '/chat'	
 			return
 		end
@@ -24,7 +24,7 @@ class AuthsController < ApplicationController
 	end
 
 	def logout
-		session.delete(:user_id)
+		user_sign_out!
 		redirect_to :action => "new"
 	end
 

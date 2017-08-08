@@ -1,11 +1,8 @@
 class ChatsController < ApplicationController
-	def show
-		if session[:user_id].nil?
-			redirect_to '/'
-			return
-		end
+	include AuthUser
+	before_action :login_user!
 
-		@chat = Chat.all
+	def show
 	end
 
 	def new
@@ -19,5 +16,12 @@ class ChatsController < ApplicationController
 
 	def view
 		@id = params[:id]
+		@user = session[:user_id]
+	end
+
+	private
+	
+	def login_user!
+		redirect_to '/' unless user_signed_in?
 	end
 end
